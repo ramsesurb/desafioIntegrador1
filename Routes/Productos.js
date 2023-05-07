@@ -30,11 +30,6 @@ routerProd.delete("/:id", async (req, res) => {
   const deleteProd = await productos.deleteById(id);
   res.send(deleteProd);
 });
-// put
-routerProd.put("/:id", async (req, res) => {
-  const id = parseFloat(req.params.id);
-  const newProd = req.body;
-  const saveProd = await productos.updateProductById(id, newProd);
-  res.send(saveProd);
-});
+
+
 export default routerProd;

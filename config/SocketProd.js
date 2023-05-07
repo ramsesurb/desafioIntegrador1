@@ -1,10 +1,11 @@
 import ProductManagerMongo from "../Controllers/ProductManagerMongo.js";
+import ChatManager from "../Controllers/ChatManager.js";
 import http from "http";
 import { Server } from "socket.io";
 
-const productos = new ProductManagerMongo("../Controllers/ProductManagerMongo.js");
+const productos = new ProductManagerMongo();
+const chat= new ChatManager()
 
-const prods = await productos.getProducts();
 
 export default function configureWebSocketServer(app) {
   const server = http.createServer(app);
@@ -15,13 +16,19 @@ export default function configureWebSocketServer(app) {
     socket.on("nuevoProducto", async (producto) => {
       await productos.addProduct(producto);
 
-      socketServerIO.emit("actualizarTabla", await productos.getProducts());
+      socketServerIO.emit("actualizarTabla",  productos.getProducts());
     });
     socket.on("quitarProducto", async ({ id }) => {
       await productos.deleteById(id);
       console.log(id);
 
-      socketServerIO.emit("actualizarTabla", await productos.getProducts());
+      socketServerIO.emit("actualizarTabla",  productos.getProducts());
+    });
+    socket.on("nuevoChat", async (mensaje) => {
+      await ChatManager.addMessage(mensaje);
+      console.log(mensaje);
+
+      socketServerIO.emit("actualizarChat",  chat.getChat());
     });
   });
 
