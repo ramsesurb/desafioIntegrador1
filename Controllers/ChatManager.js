@@ -1,10 +1,10 @@
-import { promises as fs } from "fs";
+import productoModel from '../Config/chat.js';
 
 class ChatManager {
-    async getChat(limit) {
+    async getChat() {
       try {
         const content = JSON.parse(
-          await fs.readFile(`./Data/Chat.json`, "utf-8")
+          const content = await productoModel.find()
         );
         
         if (limit) {
@@ -29,16 +29,12 @@ class ChatManager {
           return { error: mensaje };
         }
         const id = (Math.floor(Math.random() * 100) % 100).toString().padStart(5, '0');
-        const newchatuct = {
+        const newChat = {
           id: id,
           usuario: chat.usuario,
           mensaje: chat.mensaje
         };
-        await saveCont.push(newchatuct);
-  
-        await fs.writeFile(
-          `./Data/Chat.json`,
-          JSON.stringify(saveCont, null, 2)
+        const result = await productoModel.create(newChat)
         );
       } catch (error) {
         console.log(error);
