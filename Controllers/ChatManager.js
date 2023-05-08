@@ -1,10 +1,10 @@
-import productoModel from '../Config/chat.js';
+import chatModel from '../Config/chat.js';
 
 class ChatManager {
     async getChat() {
       try {
         const content = JSON.parse(
-          const content = await productoModel.find()
+          const content = await chatModel.find()
         );
         
         if (limit) {
@@ -34,7 +34,7 @@ class ChatManager {
           usuario: chat.usuario,
           mensaje: chat.mensaje
         };
-        const result = await productoModel.create(newChat)
+        const result = await chatModel.create(newChat)
         );
       } catch (error) {
         console.log(error);
@@ -43,13 +43,8 @@ class ChatManager {
   
     async deleteById(id) {
       try {
-        const content = await rute.getChat();
-        const deleteByid = content.filter((e) => e.id !== id);
-        console.log("chatucto eliminado");
-        await fs.writeFile(
-          `./Data/Chat.json`,
-          JSON.stringify(deleteByid, null, 2)
-        );
+        const deleteByid = await chatModel.findOneAndDelete({id:id})
+        console.log("chat eliminado");
         return deleteByid;
       } catch (error) {
         console.log(error);
@@ -60,10 +55,7 @@ class ChatManager {
         let chatucts = await rute.getChat();
         chatucts.splice(0, chatucts.length);
   
-        await fs.writeFile(
-          `./Data/Chat.json`,
-          JSON.stringify(chatucts, null, 2)
-        );
+       
       } catch (error) {
         console.log(error);
       }
