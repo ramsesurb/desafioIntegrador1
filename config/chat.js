@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-const Collection = 'Products'
+const Collection = 'chat'
 
 const chatSchema = new mongoose.Schema({
   id: {
