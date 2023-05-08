@@ -2,13 +2,13 @@ const socket = io();
 
 //agregar mensaje
 
-const form = document.getElementById("chatForm");
+const form3 = document.getElementById("chatForm");
 
-form.addEventListener("submit", (event) => {
+form3.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const usuario = form.elements.usuario.value;
-  const mensaje = form.elements.mensaje.value;
+  const usuario = form3.elements.usuario.value;
+  const mensaje = form3.elements.mensaje.value;
   
   console.log(event);
   socket.emit("nuevoChat", { usuario,mensaje });

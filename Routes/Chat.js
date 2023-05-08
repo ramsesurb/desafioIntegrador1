@@ -8,6 +8,6 @@ const realTimeChat = Router();
 realTimeChat.get("/", async (req, res) => {
   const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
   const chats = await chat.getChat();
-  res.render("chat", { productos: chats });
+  res.render("chat", { chat: chats });
 });
 export default realTimeChat;

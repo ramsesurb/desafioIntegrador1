@@ -8,7 +8,7 @@
 
 <div class="card border border-dark border-3 rounded">
   <div class="card-body">
-    <form id="chatForm" class="h-2 p-5" method="post" name="productos">
+    <form id="chatForm" class="h-2 p-5" method="post" name="chat">
 
       <div class="form-group ">
         <label for="usuario"><b>usuario</b></label>
@@ -27,7 +27,7 @@
   </div>
 </div>
 <div class="entry mt-4">
-    {{#if productos}}
+    {{#if chat}}
     <div class="  p-1 border border-dark border-3 rounded">
         <table class="  table table-resposive ">
             <thead class="thead-dark text-light bg-primary">
@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody id="chatDisplay">
-                {{#each productos}}
+                {{#each chat}}
                 <tr class="table">
                     <th>{{ this.id }}</th>
                     <td>{{ this.usuario }}</td>
