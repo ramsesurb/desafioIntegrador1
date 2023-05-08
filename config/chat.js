@@ -14,10 +14,10 @@ const chatSchema = new mongoose.Schema({
   mensaje: {
     type: String,
     required: true,
-  }
+  } { collection: "chat" }
 });
   
 const productoModel = mongoose.model(Collection, chatSchema);
  
 
-  export default productoModel
+  export default chatModel
