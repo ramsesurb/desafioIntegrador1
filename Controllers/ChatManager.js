@@ -28,7 +28,7 @@ class ChatManager {
           console.log(mensaje);
           return { error: mensaje };
         }
-        const id = (Math.floor(Math.random() * 100) % 100).toString().padStart(5, '0');
+        const id = (Math.floor(Math.random() * 100000000)).toString().padStart(8, '0');
         const newChat = {
           id: id,
           usuario: chat.usuario,
