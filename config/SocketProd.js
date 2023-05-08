@@ -25,10 +25,10 @@ export default function configureWebSocketServer(app) {
       socketServerIO.emit("actualizarTabla",  productos.getProducts());
     });
     socket.on("nuevoChat", async (mensaje) => {
-      await ChatManager.addMessage(mensaje);
+      await chat.addMenssage(mensaje);
       console.log(mensaje);
 
-      socketServerIO.emit("actualizarChat",  chat.getChat());
+      socketServerIO.emit("actualizarChat",chat.getChat());
     });
   });
 

@@ -2,8 +2,18 @@ const socket = io();
 
 //agregar mensaje
 
- 
+const form = document.getElementById("chatForm");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const usuario = form.elements.usuario.value;
+  const mensaje = form.elements.mensaje.value;
+  
+  console.log(event);
   socket.emit("nuevoChat", { usuario,mensaje });
+});
+
 
 socket.on("actualizarChat", (data) => {
   renderizarChat(data);
