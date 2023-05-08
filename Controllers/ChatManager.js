@@ -41,15 +41,24 @@ class ChatManager {
       }
     }
   
-    async deleteById(id) {
-      try {
-        const deleteByid = await chatModel.findOneAndDelete({id:id})
-        console.log("chat eliminado");
-        return deleteByid;
-      } catch (error) {
-        console.log(error);
-      }
+   async getByid(id) {
+    try {
+      
+      const getByid =await chatModel.findOne({id:id})
+      console.log("chat buscado", getByid);
+      return getByid;
+    } catch (error) {
+      console.log(error);
     }
+  }
+  async deleteById(id) {
+    try {
+      const deleteByid = await chatModel.findOneAndDelete({id:id})
+      return deleteByid;
+    } catch (error) {
+      console.log(error);
+    }
+  }
     async deleteAll() {
       try {
         let chatucts = await rute.getChat();
